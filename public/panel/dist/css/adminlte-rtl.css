@@ -1,0 +1,137 @@
+body {
+    font-size: .93rem;
+}
+
+ul {
+    padding-inline-start: 0px;
+}
+
+.form-control {
+    height: calc(2rem + 2px);
+    padding: 0.2rem 0.5rem;
+    font-size: 0.9rem;
+}
+
+.layout-fixed .main-sidebar {
+    right: 0;
+}
+
+.content-wrapper,
+.main-footer,
+.main-header {
+    margin-left: 0px !important;
+    margin-right: 250px;
+}
+
+.mr-auto-navbav {
+    margin-right: auto !important;
+}
+
+.navbar-expand .navbar-nav .nav-link {
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+[class*="icheck-"]>input:first-child:checked+input[type="hidden"]+label::after,
+[class*="icheck-"]>input:first-child:checked+label::after {
+    right: 15px;
+    left: auto;
+}
+
+.nav-sidebar .nav-link>.right,
+.nav-sidebar .nav-link>p>.right {
+    left: 1rem;
+    right: auto;
+}
+
+.nav-sidebar .nav-link>.right:nth-child(2),
+.nav-sidebar .nav-link>p>.right:nth-child(2) {
+    left: 2.2rem;
+    right: auto;
+}
+
+.small-box .icon>i {
+    left: 15px;
+    right: auto;
+}
+
+@media (min-width: 992px) {
+    .sidebar-mini.sidebar-collapse .content-wrapper,
+    .sidebar-mini.sidebar-collapse .main-footer,
+    .sidebar-mini.sidebar-collapse .main-header {
+        margin-right: 4.6rem !important;
+    }
+    .sidebar-mini.sidebar-collapse .content-wrapper,
+    .sidebar-mini.sidebar-collapse .main-footer,
+    .sidebar-mini.sidebar-collapse .main-header {
+        margin-right: 4.6rem !important;
+        margin-left: 0 !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .main-sidebar,
+    .main-sidebar::before {
+        box-shadow: none !important;
+        margin-right: -250px;
+    }
+    .content-wrapper,
+    .content-wrapper::before,
+    .main-footer,
+    .main-footer::before,
+    .main-header,
+    .main-header::before {
+        margin-right: 0;
+    }
+    .sidebar-open .main-sidebar,
+    .sidebar-open .main-sidebar::before {
+        margin-right: 0;
+    }
+}
+
+.help-block {
+    font-size: 80%;
+    color: darkgrey;
+    margin-top: 2px;
+}
+
+.control-sidebar {
+    bottom: calc(3.5rem + 1px);
+    position: absolute;
+    top: calc(3.5rem + 1px);
+    z-index: 103100000000000000;
+}
+
+.card-title {
+    float: right !important;
+}
+
+.card-header>.card-tools {
+    float: left !important;
+    margin-left: -.625rem !important;
+}
+
+@font-face {
+    font-family: vazir;
+    src: url("../fonts/vazir/Vazir-Light-FD.eot");
+    src: url("../fonts/vazir/Vazir-Light-FD.eot?#iefix") format("embedded-opentype"), url("../fonts/vazir/Vazir-Light-FD.woff2") format("woff2"), url("../fonts/vazir/Vazir-Light-FD.woff") format("woff"), url("../fonts/vazir/Vazir-Light-FD.ttf") format("truetype");
+    font-weight: normal;
+}
+
+body {
+    font-family: "vazir", Arial, Helvetica, sans-serif !important;
+    font-size: 0.85rem;
+}
+.ribbon-wrapper .ribbon {
+    right: -23px;
+}
+
+.ribbon-wrapper.ribbon-xl .ribbon {
+    right: -45px;
+}
+.ribbon-wrapper.ribbon-lg .ribbon {
+    right: -35px;
+}
+.ribbon-wrapper.ribbon-xl .ribbon {
+    right: -61px;
+}
