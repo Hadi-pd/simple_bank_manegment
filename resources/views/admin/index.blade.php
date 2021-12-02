@@ -31,7 +31,7 @@
                   <div class="inner">
                     <h3>150</h3>
   
-                    <p>سفارشات جدید</p>
+                    <p>تعداد کل اعضای بانک</p>
                   </div>
                   <div class="icon">
                     <i class="ion ion-bag"></i>
@@ -44,9 +44,9 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                   <div class="inner">
-                    <h3>53<sup style="font-size: 20px">%</sup></h3>
+                    <h3>53</h3>
   
-                    <p>نرخ رشد کاربران</p>
+                    <p>وام های پرداخت شده تا کنون</p>
                   </div>
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
@@ -59,9 +59,8 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                   <div class="inner">
-                    <h3>44</h3>
-  
-                    <p>کاربران عضو شده</p>
+                    <h3>1,560,000,000,000</h3>
+                    <p>موجودی کل بانک</p>
                   </div>
                   <div class="icon">
                     <i class="ion ion-person-add"></i>
@@ -74,9 +73,9 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                   <div class="inner">
-                    <h3>65</h3>
+                    <h3>6,500,000,000,000</h3>
   
-                    <p>بازدید کنندگان</p>
+                    <p>مبلغ کل وام های پرداختی</p>
                   </div>
                   <div class="icon">
                     <i class="ion ion-pie-graph"></i>
@@ -93,9 +92,8 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                   <div class="inner">
-                    <h3>150</h3>
-  
-                    <p>سفارشات جدید</p>
+                    <h3>94,200,000,000</h3>
+                    <p> موجودی فعلی بانک</p>
                   </div>
                   <div class="icon">
                     <i class="ion ion-bag"></i>
@@ -108,9 +106,8 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                   <div class="inner">
-                    <h3>53<sup style="font-size: 20px">%</sup></h3>
-  
-                    <p>نرخ رشد کاربران</p>
+                    <h3>5<sup style="font-size: 20px">%</sup></h3>
+                    <p>وام های جاری </p>
                   </div>
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
@@ -123,9 +120,8 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                   <div class="inner">
-                    <h3>44</h3>
-  
-                    <p>کاربران عضو شده</p>
+                    <h3>440,000,000</h3>
+                    <p>میزان وام جاری</p>
                   </div>
                   <div class="icon">
                     <i class="ion ion-person-add"></i>
@@ -138,9 +134,8 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                   <div class="inner">
-                    <h3>65</h3>
-  
-                    <p>بازدید کنندگان</p>
+                    <h3>65,000,000</h3>
+                    <p>کل کارمزد بانک</p>
                   </div>
                   <div class="icon">
                     <i class="ion ion-pie-graph"></i>
@@ -171,14 +166,11 @@
                 <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
   
                 <script>
-                  var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-                  var yValues = [55, 49, 44, 24, 15];
+                  var xValues = ["موجودی فعلی", "میزان وام"];
+                  var yValues = [55, 45];
                   var barColors = [
                     "#b91d47",
                     "#00aba9",
-                    "#2b5797",
-                    "#e8c3b9",
-                    "#1e7145"
                   ];
   
                   new Chart("myChart", {
@@ -193,7 +185,7 @@
                     options: {
                       title: {
                         display: true,
-                        text: "World Wide Wine Production 2018"
+                        text: "موجودی کل بانک"
                       }
                     }
                   });
