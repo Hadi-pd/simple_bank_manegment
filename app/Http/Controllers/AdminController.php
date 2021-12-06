@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Accounts;
+use App\Models\Loans;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -13,7 +15,15 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $acc = Accounts::all();
+        $loans = Loans::all();
+
+        $loans_sum = Loans::sum('l_amount');
+        $formatter = new \NumberFormatter('fa', \NumberFormatter::CURRENCY);
+        $loans_sum_mony = $formatter->formatCurrency( $loans_sum , 'IRR');
+        $acc_count = Accounts::count();
+        $loans_count =  Loans::count();
+        return view('admin.index', compact('acc_count', 'loans_count','loans_sum_mony'));
     }
 
     /**

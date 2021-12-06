@@ -29,9 +29,9 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                   <div class="inner">
-                    <h3>150</h3>
+                    <h3>{{$acc_count}}</h3>
   
-                    <p>تعداد کل اعضای بانک</p>
+                    <p>تعداد کل حساب ها</p>
                   </div>
                   <div class="icon">
                     <i class="ion ion-bag"></i>
@@ -44,8 +44,7 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                   <div class="inner">
-                    <h3>53</h3>
-  
+                    <h3>{{$loans_count}}</h3>
                     <p>وام های پرداخت شده تا کنون</p>
                   </div>
                   <div class="icon">
@@ -73,7 +72,7 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                   <div class="inner">
-                    <h3>6,500,000,000,000</h3>
+                    <h3>{{$loans_sum_mony}}</h3>
   
                     <p>مبلغ کل وام های پرداختی</p>
                   </div>
@@ -106,7 +105,7 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                   <div class="inner">
-                    <h3>5<sup style="font-size: 20px">%</sup></h3>
+                    <h3>5</h3>
                     <p>وام های جاری </p>
                   </div>
                   <div class="icon">
