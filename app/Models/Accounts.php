@@ -7,5 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Accounts extends Model
 {
-    use HasFactory;
+    //use HasFactory;
+
+    protected $table='accounts';
+    protected $fillable=[
+        'name',
+        'last_name',
+        'email',
+        'phone',
+        'first_pay',
+        'address',
+        'bank_account_number',
+        'other_info'
+    ];
+
+    public function loans(){
+        return $this->hasMany(Loans::class, 'account_id');
+    }
 }
