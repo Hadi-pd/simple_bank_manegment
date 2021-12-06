@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountsController;
+use App\Http\Controllers\DepositsController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoansController;
 use App\Http\Controllers\TestController;
@@ -18,6 +19,7 @@ Route::middleware(['auth', 'isAdmin'])->group( function () {
     Route::get('admin',[AdminController::class,'index']);
     Route::get('accounts',[AccountsController::class,'index']);
     Route::get('loans',[LoansController::class,'index']);
+    Route::get('deposits',[DepositsController::class,'index']);
 });
 
 Route::get('/test', [TestController::class, 'test']);
