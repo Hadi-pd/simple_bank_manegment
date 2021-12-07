@@ -1,3 +1,5 @@
+</div>
+<!-- /.content-wrapper -->
 <footer class="main-footer">
     <strong>کپی رایت &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
     تمامی حقوق محفوظ می باشد. ارائه شده برای پارسی زبانان توسط <a href="http://mahdieight.ir">مهدی آمره</a>

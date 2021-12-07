@@ -6,9 +6,6 @@
     <link rel="stylesheet" href="{{ asset('panel/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('panel/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -39,7 +36,7 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>نام و نام خانوادگی </th>
+                                            <th>پرداخت کننده</th>
                                             <th>نوع پرداخت</th>
                                             <th>شماره وام</th>
                                             <th>شماره پیگیری</th>
@@ -58,16 +55,22 @@
                                                 <td>{{ $deposit->deposit_date }}</td>
                                                 <td>{{ $deposit->created_at }}</td>
                                                 <td>{{ $deposit->updated_at }}</td>
+                                                <td>
+                                                 <a href="{{ url('/')}}" title="ویرایش">
+                                                    <i class="fas fa-edit"></i>
+                                                 </a>
+                                                         
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>نام و نام خانوادگی </th>
-                                            <th>ضامن اول</th>
-                                            <th>ضامن دوم</th>
-                                            <th>مبلغ وام</th>
-                                            <th>درصد کارمزد</th>
+                                            <th>پرداخت کننده</th>
+                                            <th>نوع پرداخت</th>
+                                            <th>شماره وام</th>
+                                            <th>شماره پیگیری</th>
+                                            <th>تاریخ و زمان پرداخت</th>
                                             <th>تاریخ ایجاد</th>
                                             <th>تاریخ بروزرسانی</th>
                                         </tr>
@@ -85,8 +88,7 @@
             <!-- /.container-fluid -->
         </section>
         <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
+
 
     <!-- DataTables  & Plugins -->
     <script src="{{ asset('panel/plugins/datatables/jquery.dataTables.min.js') }}"></script>
