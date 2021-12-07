@@ -17,9 +17,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::middleware(['auth', 'isAdmin'])->group( function () {
     Route::get('admin',[AdminController::class,'index']);
-    Route::get('accounts',[AccountsController::class,'index']);
-    Route::get('loans',[LoansController::class,'index']);
-    Route::get('deposits',[DepositsController::class,'index']);
+    Route::resource('accounts',AccountsController::class);
+    Route::resource('loans',LoansController::class);
+    Route::resource('deposits',DepositsController::class);
 });
 
 Route::get('/test', [TestController::class, 'test']);
