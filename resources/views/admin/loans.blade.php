@@ -55,6 +55,11 @@
                                                 <td>{{ $loan->l_percentage }}</td>
                                                 <td>{{ $loan->created_at }}</td>
                                                 <td>{{ $loan->updated_at }}</td>
+                                                <td>
+                                                    <a href="{{ route('loans.edit', $loan) }}" title="ویرایش">
+                                                       <i class="fas fa-edit"></i>
+                                                    </a>   
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

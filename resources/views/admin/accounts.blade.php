@@ -59,6 +59,11 @@
                                                 <td>{{ $account->bank_account_number }}</td>
                                                 <td>{{ $account->other_info }}</td>
                                                 <td>{{ $account->created_at }}</td>
+                                                <td>
+                                                    <a href="{{ route('accounts.edit', $account) }}" title="ویرایش">
+                                                       <i class="fas fa-edit"></i>
+                                                    </a>   
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
