@@ -39,7 +39,14 @@ class DepositsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = Deposits::create([
+            'account_id' => $request->account_id,
+            'deposit_type' => $request->deposit_type,
+            'loan_id' => $request->loan_id ?? 0,
+            'tracking_code' => $request->tracking_code,
+            'deposit_date' => $request->deposit_dat
+        ]);
+        return redirect()->back();
     }
 
     /**
@@ -59,9 +66,12 @@ class DepositsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($deposit)
     {
-        //
+        $edit = true;
+        $accounts = Accounts::all();
+        $deposits = Deposits::find($deposit);
+        return view('forms.deposit',compact('deposits','edit','accounts'));
     }
 
     /**
@@ -71,9 +81,16 @@ class DepositsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $deposit)
     {
-        //
+        $cat=Deposits::find($deposit);
+        $cat->account_id = $request->account_id;
+        $cat->deposit_type = $request->deposit_type;
+        $cat->loan_id = $request->loan_id;
+        $cat->tracking_code = $request->tracking_code;
+        $cat->deposit_date = $request->deposit_dat;
+        $cat->save();
+        return redirect()->back();
     }
 
     /**

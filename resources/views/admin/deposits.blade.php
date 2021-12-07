@@ -56,10 +56,9 @@
                                                 <td>{{ $deposit->created_at }}</td>
                                                 <td>{{ $deposit->updated_at }}</td>
                                                 <td>
-                                                 <a href="{{ url('/')}}" title="ویرایش">
+                                                 <a href="{{ route('deposits.edit', $deposit) }}" title="ویرایش">
                                                     <i class="fas fa-edit"></i>
-                                                 </a>
-                                                         
+                                                 </a>   
                                                 </td>
                                             </tr>
                                         @endforeach

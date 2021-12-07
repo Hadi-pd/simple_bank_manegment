@@ -1,7 +1,5 @@
 @extends('layouts.master')
 @section('content')
-
-
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
@@ -18,17 +16,6 @@
             </div>
         </div><!-- /.container-fluid -->
     </section>
-
-    {{-- <tr>
-        <th>پرداخت کننده</th>
-        <th>نوع پرداخت</th>
-        <th>شماره وام</th>
-        <th>شماره پیگیری</th>
-        <th>تاریخ و زمان پرداخت</th>
-        <th>تاریخ ایجاد</th>
-        <th>تاریخ بروزرسانی</th>
-    </tr> --}}
-
     <div class="col-md-6">
         <!-- general form elements -->
         <div class="card card-primary">
@@ -65,13 +52,13 @@
                         <label>نوع پرداخت</label>
                         <select class="form-control" name="deposit_type">
                             @if ($edit)
-                                <option value="loan" {{ ($deposits->deposit_type == 'loan') ? 'selected' : '' }}>
+                                <option value="loan" {{ $deposits->deposit_type == 'loan' ? 'selected' : '' }}>
                                     وام
                                 </option>
-                                <option value="deposit" {{ ($deposits->deposit_type == 'deposit') ? 'selected' : '' }}>
+                                <option value="deposit" {{ $deposits->deposit_type == 'deposit' ? 'selected' : '' }}>
                                     سپرده
                                 </option>
-                                <option value="bank" {{ ($deposits->deposit_type == 'bank') ? 'selected' : '' }}>
+                                <option value="bank" {{ $deposits->deposit_type == 'bank' ? 'selected' : '' }}>
                                     کمکی بانک
                                 </option>
                             @else
@@ -89,17 +76,17 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">شماره وام</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1"
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="loan_id"
                             value="{{ $edit ? $deposits->loan_id : '' }}" placeholder="شماره وام">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">کد پیگیری</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1"
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="tracking_code"
                             value="{{ $edit ? $deposits->tracking_code : '' }}" placeholder="کدپیگیری">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">زمان رسید پرداخت</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1"
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="deposit_date"
                             value="{{ $edit ? $deposits->deposit_date : '' }}" placeholder="زمان پرداخت رسید">
                     </div>
                 </div>
@@ -111,11 +98,7 @@
                     @endif
                 </div>
             </form>
-
         </div>
         <!-- /.card -->
     </div>
-
-
-
 @endsection
