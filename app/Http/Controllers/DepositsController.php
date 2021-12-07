@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Accounts;
 use App\Models\Deposits;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,9 @@ class DepositsController extends Controller
      */
     public function create()
     {
-        //
+        $accounts = Accounts::all();
+        $edit = false;
+        return view('forms.deposit', compact('edit','accounts'));
     }
 
     /**
