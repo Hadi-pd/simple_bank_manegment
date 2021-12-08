@@ -25,7 +25,8 @@ class AccountsController extends Controller
      */
     public function create()
     {
-        //
+        $edit = false;
+        return view('forms.account', compact('edit'));
     }
 
     /**
@@ -36,7 +37,17 @@ class AccountsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $store = Accounts::create([
+            'name'=>                $request-> name,
+            'last_name'=>           $request-> last_name,
+            'email'=>               $request-> email,
+            'phone'=>               $request-> phone,
+            'first_pay'=>           $request-> first_pay,
+            'address'=>             $request-> address,
+            'bank_account_number'=> $request-> bank_account_number,
+            'other_info'=>          $request-> other_info
+        ]);                   
+        return redirect()->back();
     }
 
     /**
@@ -56,9 +67,11 @@ class AccountsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($account)
     {
-        //
+        $edit = true;
+        $accounts = Accounts::find($account);
+        return view('forms.account',compact('edit','accounts'));
     }
 
     /**
@@ -68,9 +81,19 @@ class AccountsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $account)
     {
-        //
+        $update = Accounts::find($account);
+        $update -> name = $request-> name;
+        $update -> last_name = $request-> last_name;
+        $update -> email = $request-> email;
+        $update -> phone = $request-> phone;
+        $update -> first_pay = $request-> first_pay;
+        $update -> address = $request-> address;
+        $update -> bank_account_number = $request-> bank_account_number;
+        $update -> other_info = $request-> other_info;
+        $update -> save();
+        return redirect()->back();
     }
 
     /**
