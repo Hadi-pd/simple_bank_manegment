@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Accounts;
 use App\Models\Loans;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,9 @@ class LoansController extends Controller
      */
     public function create()
     {
-        //
+        $accounts = Accounts::all();
+        $edit = false;
+        return view('forms.Loan', compact('edit','accounts'));
     }
 
     /**
@@ -36,7 +39,14 @@ class LoansController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $loan = Loans::create([
+            'account_id' =>      $request->account_id,
+            'l_guarantor1_id' => $request->l_guarantor1_id,
+            'l_guarantor2_id' => $request->l_guarantor2_id,
+            'l_amount' =>        $request->l_amount,
+            'l_percentage' =>    $request->l_percentage
+        ]);
+        return redirect()->back();
     }
 
     /**
@@ -56,9 +66,12 @@ class LoansController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($loan)
     {
-        //
+        $edit = true;
+        $accounts = Accounts::all();
+        $loans = Loans::find($loan);
+        return view('forms.Loan',compact('loans','edit','accounts'));
     }
 
     /**
@@ -68,9 +81,17 @@ class LoansController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $loan)
     {
-        //
+        
+        $data = Loans::find($loan);
+        $data->account_id = $request->account_id;
+        $data->l_guarantor1_id = $request->l_guarantor1_id;
+        $data->l_guarantor2_id = $request->l_guarantor2_id;
+        $data->l_amount = $request->l_amount;
+        $data->l_percentage = $request->l_percentage;
+        $data->save();
+        return redirect()->back();
     }
 
     /**

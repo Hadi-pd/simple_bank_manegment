@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>پرداخت جدید</h1>
+                    <h1>وام جدید</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="#">صفحه اصلی</a></li>
-                        <li class="breadcrumb-item active">ایجاد پرداخت جدید</li>
+                        <li class="breadcrumb-item active">ایجاد وام جدید</li>
                     </ol>
                 </div>
             </div>
@@ -20,11 +20,11 @@
         <!-- general form elements -->
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">فرم پرداخت</h3>
+                <h3 class="card-title">فرم ایجاد وام</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form method="POST" action="{{ $edit ? route('deposits.update', $deposits) : url('deposits') }}">
+            <form method="POST" action="{{ $edit ? route('loans.update', $loans) : url('loans') }}">
                 @csrf
                 @if ($edit)
                     @method('PUT')
@@ -36,7 +36,7 @@
                             @if ($edit)
                                 @foreach ($accounts as $account)
                                     <option value="{{ $account->id }}"
-                                        {{ $account->id == $deposits->account_id ? 'selected' : '' }}>
+                                        {{ $account->id == $loans->account_id ? 'selected' : '' }}>
                                         {{ $account->name . ' ' . $account->last_name }}
                                     </option>
                                 @endforeach
@@ -49,45 +49,60 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>نوع پرداخت</label>
-                        <select class="form-control" name="deposit_type">
+                        <label>انتخاب ضامن اول</label>
+                        <select class="form-control" name="l_guarantor1_id">
                             @if ($edit)
-                                <option value="loan" {{ $deposits->deposit_type == 'loan' ? 'selected' : '' }}>
-                                    وام
-                                </option>
-                                <option value="deposit" {{ $deposits->deposit_type == 'deposit' ? 'selected' : '' }}>
-                                    سپرده
-                                </option>
-                                <option value="bank" {{ $deposits->deposit_type == 'bank' ? 'selected' : '' }}>
-                                    کمکی بانک
-                                </option>
+                                @foreach ($accounts as $account)
+                                    <option value="{{ $account->id }}"
+                                        {{ $account->id == $loans->l_guarantor1_id ? 'selected' : '' }}>
+                                        {{ $account->name . ' ' . $account->last_name }}
+                                    </option>
+                                @endforeach
                             @else
-                                <option value="loan">
-                                    وام
-                                </option>
-                                <option value="deposit">
-                                    سپرده
-                                </option>
-                                <option value="bank">
-                                    کمکی بانک
-                                </option>
+                                @foreach ($accounts as $account)
+                                    <option value="{{ $account->id }}"> {{ $account->name . ' ' . $account->last_name }}
+                                    </option>
+                                @endforeach
                             @endif
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">شماره وام</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" name="loan_id"
-                            value="{{ $edit ? $deposits->loan_id : '' }}" placeholder="شماره وام">
+                        <label>انتخاب ضامن دوم</label>
+                        <select class="form-control" name="l_guarantor2_id">
+                            @if ($edit)
+                                @foreach ($accounts as $account)
+                                    <option value="{{ $account->id }}"
+                                        {{ $account->id == $loans->l_guarantor2_id ? 'selected' : '' }}>
+                                        {{ $account->name . ' ' . $account->last_name }}
+                                    </option>
+                                @endforeach
+                            @else
+                                @foreach ($accounts as $account)
+                                    <option value="{{ $account->id }}"> {{ $account->name . ' ' . $account->last_name }}
+                                    </option>
+                                @endforeach
+                            @endif
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">کد پیگیری</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" name="tracking_code"
-                            value="{{ $edit ? $deposits->tracking_code : '' }}" placeholder="کدپیگیری">
+                        <label for="exampleInputEmail1">(ریال) مقدار وام</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="l_amount"
+                            value="{{ $edit ? $loans->l_amount : '' }}" placeholder="مقدار به ریال">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">زمان رسید پرداخت</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" name="deposit_date"
-                            value="{{ $edit ? $deposits->deposit_date : '' }}" placeholder="زمان پرداخت رسید">
+                        <label for="exampleInputEmail1">درصد کارمزد</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="l_percentage"
+                            value="{{ $edit ? $loans->l_percentage : '' }}" placeholder="عدد درصد کارمزد">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">زمان شروع پرداخت</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="loan_date"
+                            value="{{ $edit ? $loans->loan_date : '' }}" placeholder="زمان پرداخت رسید">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">زمان اتمام پرداخت</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="loan_date"
+                            value="{{ $edit ? $loans->loan_date : '' }}" placeholder="زمان پرداخت رسید">
                     </div>
                 </div>
                 <div class="card-footer">
