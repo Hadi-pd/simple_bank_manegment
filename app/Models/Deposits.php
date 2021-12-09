@@ -13,6 +13,10 @@ class Deposits extends Model
        'deposit_type',
        'loan_id',
        'tracking_code',
-       'deposit_date'
+       'deposit_date',
+       'deposit_amount',
+       'other_info',
+       'is_deposit',
+       'is_accepted'
     ];
 }

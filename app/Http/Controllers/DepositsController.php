@@ -44,7 +44,11 @@ class DepositsController extends Controller
             'deposit_type' => $request->deposit_type,
             'loan_id' => $request->loan_id ?? 0,
             'tracking_code' => $request->tracking_code,
-            'deposit_date' => $request->deposit_dat
+            'deposit_date' => $request->deposit_dat,
+            'deposit_amount' => ($request->is_deposit == 1) ? $request->deposit_amount : ($request->deposit_amount * -1),
+            'other_info' => $request->other_info,
+            'is_deposit' => $request->is_deposit,
+            'is_accepted' => ($request->is_accepted== 'on') ? 1 : 0, 
         ]);
         return redirect()->back();
     }
@@ -83,13 +87,17 @@ class DepositsController extends Controller
      */
     public function update(Request $request, $deposit)
     {
-        $cat=Deposits::find($deposit);
-        $cat->account_id = $request->account_id;
-        $cat->deposit_type = $request->deposit_type;
-        $cat->loan_id = $request->loan_id;
-        $cat->tracking_code = $request->tracking_code;
-        $cat->deposit_date = $request->deposit_dat;
-        $cat->save();
+        $update=Deposits::find($deposit);
+        $update->account_id = $request->account_id;
+        $update->deposit_type = $request->deposit_type;
+        $update->loan_id = $request->loan_id;
+        $update->tracking_code = $request->tracking_code;
+        $update->deposit_date = $request->deposit_dat;
+        $update->deposit_amount = $request->deposit_amount;
+        $update->other_info = $request->other_info;
+        $update->is_deposit = $request->is_deposit;
+        $update->is_accepted =  $request->is_accepted;
+        $update->save();
         return redirect()->back();
     }
 
