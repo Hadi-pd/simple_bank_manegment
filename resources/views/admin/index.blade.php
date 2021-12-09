@@ -89,7 +89,7 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                   <div class="inner">
-                    <h3>94,200,000,000</h3>
+                    <h3>{{$deposits_sum}}</h3>
                     <p> موجودی فعلی بانک</p>
                   </div>
                   <div class="icon">
