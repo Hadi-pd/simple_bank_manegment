@@ -105,7 +105,7 @@
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item menu-open">
-              <a href="#" class="nav-link active">
+              <a href="{{url('/admin')}}" class="nav-link active">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   داشبورد
@@ -113,7 +113,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{{url('/accounts')}}" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
                 <p>
                   حساب ها
@@ -123,13 +123,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="pages/layout/top-nav.html" class="nav-link">
+                  <a href="{{url('/accounts')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p> لیست حساب ها </p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                  <a href="{{url('/accounts/create')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>ایجاد حساب جدید</p>
                   </a>
@@ -137,7 +137,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{{url('/loans')}}" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
                 <p>
                   وام ها
@@ -147,15 +147,39 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="pages/layout/top-nav.html" class="nav-link">
+                  <a href="{{url('/loans')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>لیست وام ها</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                  <a href="{{url('/loans/create')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>ایجاد وام جدید</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="{{url('/deposits')}}" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                  صورتحساب
+                  <i class="fas fa-angle-left right"></i>
+                  <span class="badge badge-info right">6</span>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{url('/deposits')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>لیست واریز-برداشت</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{url('/deposits/create')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>واریز - برداشت</p>
                   </a>
                 </li>
               </ul>
