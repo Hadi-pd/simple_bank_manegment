@@ -100,16 +100,16 @@ class LoansController extends Controller
     {
         
         $data = Loans::find($loan);
-        $data->account_id =      $request->account_id;
-        $data->l_guarantor1_id = $request->l_guarantor1_id;
-        $data->l_guarantor2_id = $request->l_guarantor2_id;
-        $data->l_amount =        $request->l_amount;
-        $data->l_percentage =    $request->l_percentage;
-        $data->start_date =    $request->start_date;
-        $data->end_date =    $request->end_date;
-        $data->Installments =    $request->Installments;
-        $data->Installment_amount =    $request->Installment_amount;
-        $data->other_info =    $request->other_info;
+        $data->account_id =         $request->account_id;
+        $data->l_guarantor1_id =    $request->l_guarantor1_id;
+        $data->l_guarantor2_id =    $request->l_guarantor2_id;
+        $data->l_amount =           $request->l_amount;
+        $data->l_percentage =       $request->l_percentage;
+        $data->start_date =         $request->start_date;
+        $data->end_date =           $request->end_date;
+        $data->Installments =       $request->Installments;
+        $data->Installment_amount = $request->Installment_amount;
+        $data->other_info =         $request->other_info;
         $data->save();
         return redirect()->back();
     }
