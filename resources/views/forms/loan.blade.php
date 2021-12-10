@@ -95,14 +95,29 @@
                             value="{{ $edit ? $loans->l_percentage : '' }}" placeholder="عدد درصد کارمزد">
                     </div>
                     <div class="form-group">
+                        <label for="exampleInputEmail1">تعداد قسط</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="Installments"
+                            value="{{ $edit ? $loans->Installments : '' }}" placeholder="تعداد قسط">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">مبلغ هر قسط</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="Installment_amount"
+                            value="{{ $edit ? $loans->Installment_amount : '' }}" placeholder="مبلغ هر قسط">
+                    </div>
+                    <div class="form-group">
                         <label for="exampleInputEmail1">زمان شروع پرداخت</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" name="loan_date"
-                            value="{{ $edit ? $loans->loan_date : '' }}" placeholder="زمان پرداخت رسید">
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="start_date"
+                            value="{{ $edit ? $loans->start_date : '' }}" placeholder="زمان شروع پرداخت">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">زمان اتمام پرداخت</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" name="loan_date"
-                            value="{{ $edit ? $loans->loan_date : '' }}" placeholder="زمان پرداخت رسید">
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="end_date"
+                            value="{{ $edit ? $loans->end_date : '' }}" placeholder="زمان اتمام پرداخت">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">توضیحات</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="other_info"
+                            value="{{ $edit ? $loans->other_info : '' }}" placeholder="توضیحات">
                     </div>
                 </div>
                 <div class="card-footer">

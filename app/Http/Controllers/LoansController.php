@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Accounts;
+use App\Models\Deposits;
 use App\Models\Loans;
 use Illuminate\Http\Request;
 
@@ -40,11 +41,19 @@ class LoansController extends Controller
     public function store(Request $request)
     {
         $loan = Loans::create([
-            'account_id' =>      $request->account_id,
-            'l_guarantor1_id' => $request->l_guarantor1_id,
-            'l_guarantor2_id' => $request->l_guarantor2_id,
-            'l_amount' =>        $request->l_amount,
-            'l_percentage' =>    $request->l_percentage
+            'account_id' =>          $request->account_id,
+            'l_guarantor1_id' =>     $request->l_guarantor1_id,
+            'l_guarantor2_id' =>     $request->l_guarantor2_id,
+            'l_amount' =>            $request->l_amount,
+            'l_percentage' =>        $request->l_percentage,
+            'start_date' =>          $request->start_date,
+            'end_date' =>            $request->end_date,
+            'Installments' =>        $request->Installments,
+            'Installment_amount' =>  $request->Installment_amount,
+            'other_info' =>          $request->other_info
+        ]); 
+        $deposit = Deposits::create([
+            
         ]);
         return redirect()->back();
     }
@@ -85,11 +94,16 @@ class LoansController extends Controller
     {
         
         $data = Loans::find($loan);
-        $data->account_id = $request->account_id;
+        $data->account_id =      $request->account_id;
         $data->l_guarantor1_id = $request->l_guarantor1_id;
         $data->l_guarantor2_id = $request->l_guarantor2_id;
-        $data->l_amount = $request->l_amount;
-        $data->l_percentage = $request->l_percentage;
+        $data->l_amount =        $request->l_amount;
+        $data->l_percentage =    $request->l_percentage;
+        $data->start_date =    $request->start_date;
+        $data->end_date =    $request->end_date;
+        $data->Installments =    $request->Installments;
+        $data->Installment_amount =    $request->Installment_amount;
+        $data->other_info =    $request->other_info;
         $data->save();
         return redirect()->back();
     }
