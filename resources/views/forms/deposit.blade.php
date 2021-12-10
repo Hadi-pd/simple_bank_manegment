@@ -102,9 +102,13 @@
                         </div>
                         <input type="hidden" class="form-control" id="exampleInputEmail1" name="is_deposit" value="1">
     
-                        <div class="form-group">
+                        <div class="form-group"> 
                             <div style="padding-right: 1.25rem;" class="form-check">
+                                @if ($edit && $deposit->is_accepted)    
+                                <input class="form-check-input" type="checkbox" name="is_accepted" checked="checked" />
+                                @else
                                 <input class="form-check-input" type="checkbox" name="is_accepted">
+                                @endif
                                 <label class="form-check-label">این واریز را تایید می کنید؟</label>
                             </div>
                         </div>

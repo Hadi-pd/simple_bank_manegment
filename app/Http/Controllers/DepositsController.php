@@ -96,7 +96,7 @@ class DepositsController extends Controller
         $update->deposit_amount = $request->deposit_amount;
         $update->other_info = $request->other_info;
         $update->is_deposit = $request->is_deposit;
-        $update->is_accepted =  $request->is_accepted;
+        $update->is_accepted =  ($request->is_accepted== 'on') ? 1 : 0;
         $update->save();
         return redirect()->back();
     }
