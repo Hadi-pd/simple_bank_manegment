@@ -10,12 +10,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>دیتاتیبل</h1>
+                        <h1>لیست واریز ها و برداشت ها</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-left">
                             <li class="breadcrumb-item"><a href="#">صفحه اصلی</a></li>
-                            <li class="breadcrumb-item active">دیتاتیبل</li>
+                            <li class="breadcrumb-item active">لیست واریز ها و برداشت ها</li>
                         </ol>
                     </div>
                 </div>
@@ -28,8 +28,8 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">دیتاتیبل با ویژگی های پیش فرض</h3>
+                            <div style="background-color: #004cff70;" class="card-header">
+                                <h3 class="card-title">لیست کل واریزی ها به بانک</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -38,6 +38,7 @@
                                         <tr>
                                             <th>پرداخت کننده</th>
                                             <th>نوع پرداخت</th>
+                                            <th>مبلغ پرداخت شده</th>
                                             <th>شماره وام</th>
                                             <th>شماره پیگیری</th>
                                             <th>تاریخ و زمان پرداخت</th>
@@ -47,20 +48,32 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($deposits as $deposit)
-                                            <tr>
-                                                <td>{{ $deposit->account_id }}</td>
-                                                <td>{{ $deposit->deposit_type }}</td>
-                                                <td>{{ $deposit->loan_id }}</td>
-                                                <td>{{ $deposit->tracking_code }}</td>
-                                                <td>{{ $deposit->deposit_date }}</td>
-                                                <td>{{ $deposit->created_at }}</td>
-                                                <td>{{ $deposit->updated_at }}</td>
-                                                <td>
-                                                 <a href="{{ route('deposits.edit', $deposit) }}" title="ویرایش">
-                                                    <i class="fas fa-edit"></i>
-                                                 </a>   
-                                                </td>
-                                            </tr>
+                                        @if ($deposit->is_deposit)    
+                                        <tr>
+                                            <td>{{ $deposit->account_id }}</td>
+                                            <td>{{ $deposit->deposit_type }}</td>
+                                            <td>{{ $deposit->deposit_amount }}</td>
+                                            <td>{{ $deposit->loan_id }}</td>
+                                            <td>{{ $deposit->tracking_code }}</td>
+                                            <td>{{ $deposit->deposit_date }}</td>
+                                            <td>{{ $deposit->created_at }}</td>
+                                            <td>{{ $deposit->updated_at }}</td>
+                                            <td>
+                                             <a href="{{ route('deposits.edit', $deposit) }}" title="ویرایش">
+                                                <i class="fas fa-edit"></i>
+                                             </a> 
+                                             @if ($deposit->is_accepted)
+                                             <a style="color:rgb(0, 177, 9)" href="{{ route('deposits.edit', $deposit->is_accepted) }}" title="تایید شده">
+                                                <i class="fas fa-clipboard-check"></i>
+                                             </a>   
+                                             @else
+                                             <a style="color:rgb(255, 0, 0)" href="{{ route('deposits.edit', $deposit->is_accepted) }}" title="تایید نشده">
+                                                <i class="fas fa-clipboard"></i>
+                                             </a>   
+                                             @endif
+                                            </td>
+                                        </tr>
+                                        @endif
                                         @endforeach
                                     </tbody>
                                     <tfoot>
@@ -87,6 +100,81 @@
             <!-- /.container-fluid -->
         </section>
         <!-- /.content -->
+
+                <!-- Main content -->
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div style="background-color: #ff0000b3; color: #fff;" class="card-header">
+                                        <h3 class="card-title">لیست کل برداشت ها از بانک</h3>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body">
+                                        <table id="example1" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>برداشت کننده</th>
+                                                    <th>نوع برداشت</th>
+                                                    <th>مبلغ برداشت شده</th>
+                                                    <th>شماره وام</th>
+                                                    <th>تاریخ ایجاد</th>
+                                                    <th>تاریخ بروزرسانی</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($deposits as $deposit)
+                                                @if (!$deposit->is_deposit)                                                    
+                                                <tr>
+                                                    <td>{{ $deposit->account_id }}</td>
+                                                    <td>{{ $deposit->deposit_type }}</td>
+                                                    <td>{{ $deposit->deposit_amount }}</td>
+                                                    <td>{{ $deposit->loan_id }}</td>
+                                                    <td>{{ $deposit->created_at }}</td>
+                                                    <td>{{ $deposit->updated_at }}</td>
+                                                    <td>
+                                                     <a href="{{ route('deposits.edit', $deposit) }}" title="ویرایش">
+                                                        <i class="fas fa-edit"></i>
+                                                     </a> 
+                                                     @if ($deposit->is_accepted)
+                                                     <a style="color:rgb(0, 177, 9)" href="{{ route('deposits.edit', $deposit->is_accepted) }}" title="تایید شده">
+                                                        <i class="fas fa-clipboard-check"></i>
+                                                     </a>   
+                                                     @else
+                                                     <a style="color:rgb(255, 0, 0)" href="{{ route('deposits.edit', $deposit->is_accepted) }}" title="تایید نشده">
+                                                        <i class="fas fa-clipboard"></i>
+                                                     </a>   
+                                                     @endif
+                                                    </td>
+                                                </tr>
+                                                @endif
+                                                @endforeach
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>پرداخت کننده</th>
+                                                    <th>نوع پرداخت</th>
+                                                    <th>شماره وام</th>
+                                                    <th>شماره پیگیری</th>
+                                                    <th>تاریخ و زمان پرداخت</th>
+                                                    <th>تاریخ ایجاد</th>
+                                                    <th>تاریخ بروزرسانی</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                    <!-- /.card-body -->
+                                </div>
+                                <!-- /.card -->
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </section>
+                <!-- /.content -->
 
 
     <!-- DataTables  & Plugins -->
