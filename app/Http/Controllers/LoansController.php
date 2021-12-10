@@ -53,7 +53,13 @@ class LoansController extends Controller
             'other_info' =>          $request->other_info
         ]); 
         $deposit = Deposits::create([
-            
+            'account_id' => $request->account_id,
+            'deposit_type' => 'loan',
+            'loan_id' => $request->loan_id ?? 0,
+            'deposit_amount' => $request->l_amount * -1,
+            'other_info' => 'این برداشت برای وام صورت گرفته است',
+            'is_deposit' => 0,
+            'is_accepted' => 1
         ]);
         return redirect()->back();
     }
