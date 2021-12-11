@@ -119,6 +119,19 @@
                         <input type="text" class="form-control" id="exampleInputEmail1" name="other_info"
                             value="{{ $edit ? $loans->other_info : '' }}" placeholder="توضیحات">
                     </div>
+                    <div class="form-group">
+                        @if ($edit && $loans->is_clear==1 )    
+                        <div style="padding-right: 1.25rem;" class="form-check">
+                            <input class="form-check-input" type="checkbox" name="is_clear" checked="checked" />
+                            <label class="form-check-label">تسویه کامل</label>
+                        </div>
+                        @else
+                        <div style="padding-right: 1.25rem;" class="form-check">
+                            <input class="form-check-input" type="checkbox" name="is_clear">
+                            <label class="form-check-label">تسویه کامل</label>
+                        </div>
+                        @endif
+                    </div>
                 </div>
                 <div class="card-footer">
                     @if ($edit)

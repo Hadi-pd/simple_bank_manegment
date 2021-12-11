@@ -17,7 +17,7 @@ class LoansController extends Controller
     public function index()
     {
         $loans = Loans::all();
-        return view('admin.loans', compact('loans'));
+        return view('admin.loans',  compact('loans'));
     }
 
     /**
@@ -50,7 +50,8 @@ class LoansController extends Controller
             'end_date' =>            $request->end_date,
             'Installments' =>        $request->Installments,
             'Installment_amount' =>  $request->Installment_amount,
-            'other_info' =>          $request->other_info
+            'other_info' =>          $request->other_info,
+            'is_clear' =>            ($request->is_clear== 'on') ? 1 : 0
         ]); 
         $deposit = Deposits::create([
             'account_id' => $request->account_id,
@@ -110,6 +111,7 @@ class LoansController extends Controller
         $data->Installments =       $request->Installments;
         $data->Installment_amount = $request->Installment_amount;
         $data->other_info =         $request->other_info;
+        $data->is_clear =           ($request->is_clear== 'on') ? 1 : 0;
         $data->save();
         return redirect()->back();
     }

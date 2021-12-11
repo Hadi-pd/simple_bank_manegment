@@ -41,6 +41,8 @@
                                             <th>ضامن دوم</th>
                                             <th>مبلغ وام</th>
                                             <th>درصد کارمزد</th>
+                                            <th>مبلغ قابل پرداخت</th>
+                                            <th>وضعیت</th>
                                             <th>تاریخ ایجاد</th>
                                             <th>تاریخ بروزرسانی</th>
                                         </tr>
@@ -48,11 +50,26 @@
                                     <tbody>
                                         @foreach ($loans as $loan)
                                             <tr>
-                                                <td>{{ $loan->account_id }}</td>
-                                                <td>{{ $loan->l_guarantor1_id }}</td>
-                                                <td>{{ $loan->l_guarantor2_id }}</td>
+                                                <td>{{ $loan->AccountName['name'].' '.$loan->AccountName['last_name'] }}</td>
+                                                <td>{{ $loan->AccountNameG1['name'].' '.$loan->AccountNameG1['last_name'] }}</td>
+                                                <td>{{ $loan->AccountNameG2['name'].' '.$loan->AccountNameG2['last_name'] }}</td>
+                                                @php
+                                                    $percentedAmount = round(($loan->l_amount*$loan->l_percentage)/100) + $loan->l_amount;
+                                                @endphp
+
                                                 <td>{{ $loan->l_amount }}</td>
                                                 <td>{{ $loan->l_percentage }}</td>
+                                                <td>{{ $percentedAmount }}</td>
+                                                <td>
+                                                    @if ($loan->is_clear)
+                                                        تسویه کامل {{ $loan->DepositsLoan() }} ریال پرداخت شده
+                                                    @else
+                                                    مبلغ {{ $loan->DepositsLoan() }} تا کنون پرداخت شده
+                                                    <div class="progress progress-xs progress-striped active">
+                                                        <div class="progress-bar bg-success" style="width: {{ round(($loan->DepositsLoan()*100)/$percentedAmount) }}%"> {{ round(($loan->DepositsLoan()*100)/$percentedAmount) }}%</div>
+                                                    </div>
+                                                    @endif
+                                                </td>
                                                 <td>{{ $loan->created_at }}</td>
                                                 <td>{{ $loan->updated_at }}</td>
                                                 <td>
@@ -70,6 +87,8 @@
                                             <th>ضامن دوم</th>
                                             <th>مبلغ وام</th>
                                             <th>درصد کارمزد</th>
+                                            <th>مبلغ قابل پرداخت</th>
+                                            <th>وضعیت</th>
                                             <th>تاریخ ایجاد</th>
                                             <th>تاریخ بروزرسانی</th>
                                         </tr>
