@@ -50,7 +50,7 @@
                                         @foreach ($deposits as $deposit)
                                         @if ($deposit->is_deposit)    
                                         <tr>
-                                            <td>{{ $deposit->account_id }}</td>
+                                            <td>{{ $deposit->AccountName['name'].' '.$deposit->AccountName['last_name'] }}</td>
                                             <td>{{ $deposit->deposit_type }}</td>
                                             <td>{{ $deposit->deposit_amount }}</td>
                                             <td>{{ $deposit->loan_id }}</td>
@@ -127,7 +127,7 @@
                                                 @foreach ($deposits as $deposit)
                                                 @if (!$deposit->is_deposit)                                                    
                                                 <tr>
-                                                    <td>{{ $deposit->account_id }}</td>
+                                                    <td>{{ $deposit->AccountName['name'].' '.$deposit->AccountName['last_name'] }}</td>
                                                     <td>{{ $deposit->deposit_type }}</td>
                                                     <td>{{ $deposit->deposit_amount }}</td>
                                                     <td>{{ $deposit->loan_id }}</td>

@@ -19,4 +19,8 @@ class Deposits extends Model
        'is_deposit',
        'is_accepted'
     ];
+
+    public function AccountName(){
+        return $this->hasOne(Accounts::class, 'id', 'account_id');
+    }
 }
