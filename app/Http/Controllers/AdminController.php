@@ -21,8 +21,9 @@ class AdminController extends Controller
         $loans_sum = $loans->sum('l_amount');
         $now_loans_sum = $loans->where('is_clear',0)->sum('l_amount');
         $deposits_sum = Deposits::where('is_accepted', 1)->sum('deposit_amount');
+        
 
-        $deposits_sum_no_loan = Deposits::where('deposit_type', '<>' ,'loan_dep')->sum('deposit_amount');
+        $deposits_sum_no_loan = Deposits::where('is_accepted', 1)->where('deposit_type', '<>' ,'loan_dep')->sum('deposit_amount');
 
         $formatter = new \NumberFormatter('fa', \NumberFormatter::CURRENCY);
         $loans_sum_mony = $formatter->formatCurrency( $loans_sum , 'IRR');
