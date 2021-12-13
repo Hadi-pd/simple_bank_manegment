@@ -56,7 +56,7 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                   <div class="inner">
-                    <h3>1,560,000,000,000</h3>
+                    <h3>{{$deposits_sum_no_loan}}</h3>
                     <p>موجودی کل بانک</p>
                   </div>
                   <div class="icon">
@@ -103,7 +103,7 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                   <div class="inner">
-                    <h3>5</h3>
+                    <h3>{{ $now_loans_count }}</h3>
                     <p>وام های جاری </p>
                   </div>
                   <div class="icon">
@@ -117,7 +117,7 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                   <div class="inner">
-                    <h3>440,000,000</h3>
+                    <h3>{{ $now_loans_sum }}</h3>
                     <p>میزان وام جاری</p>
                   </div>
                   <div class="icon">
@@ -158,13 +158,19 @@
                   </button>
                 </div>
               </div>
+              @php
+                $deposits_sum_persent = round(($deposits_sum * 100)/$deposits_sum_no_loan , 0) ;
+                $loans_sum_persent = round(($now_loans_sum * 100)/$deposits_sum_no_loan, 0) ;
+              @endphp
               <div class="card-body">
   
+                {{$deposits_sum_persent .'/// ' .$loans_sum_persent }}
+
                 <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
   
                 <script>
                   var xValues = ["موجودی فعلی", "میزان وام"];
-                  var yValues = [55, 45];
+                  var yValues = [ {{$deposits_sum_persent}} , {{$loans_sum_persent}} ];
                   var barColors = [
                     "#b91d47",
                     "#00aba9",

@@ -18,17 +18,20 @@ class AdminController extends Controller
     {
         $acc = Accounts::all();
         $loans = Loans::all();
+        $loans_sum = $loans->sum('l_amount');
+        $now_loans_sum = $loans->where('is_clear',0)->sum('l_amount');
+        $deposits_sum = Deposits::where('is_accepted', 1)->sum('deposit_amount');
 
-        $loans_sum = Loans::sum('l_amount');
-        $deposits_sum = Deposits::sum('deposit_amount');
+        $deposits_sum_no_loan = Deposits::where('deposit_type', '<>' ,'loan_dep')->sum('deposit_amount');
+
         $formatter = new \NumberFormatter('fa', \NumberFormatter::CURRENCY);
-        //$loans_sum_mony = $formatter->format( $loans_sum);
-         $loans_sum_mony = $formatter->formatCurrency( $loans_sum , 'IRR');
+        $loans_sum_mony = $formatter->formatCurrency( $loans_sum , 'IRR');
         
         $acc_count = Accounts::count();
         $loans_count =  Loans::count();
+        $now_loans_count =  Loans::where('is_clear', 0)->count();
 
-        return view('admin.index', compact('acc_count', 'loans_count','loans_sum_mony', 'deposits_sum'));
+        return view('admin.index', compact('acc_count', 'loans_count','loans_sum_mony', 'deposits_sum','now_loans_count','now_loans_sum','deposits_sum_no_loan'));
     }
 
     /**
