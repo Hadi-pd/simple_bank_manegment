@@ -60,6 +60,7 @@
                                                 <td>{{ $account->first_pay }}</td>
                                                 <td>{{ $account->AccountDeposit() }}</td>
                                                 <td>{{ $account->AccountLoanCount() }}</td>
+                                                <td>{{ $account->AccountLoanSum() }}</td>
                                                 <td>{{ $account->address }}</td>
                                                 <td>{{ $account->bank_account_number }}</td>
                                                 <td>{{ $account->other_info }}</td>

@@ -30,6 +30,9 @@ class Accounts extends Model
     public function AccountLoanCount(){
         return $this->hasMany(Loans::class, 'account_id', 'id')->count();
     }
+    public function AccountLoanSum(){
+        return $this->hasMany(Loans::class, 'account_id', 'id')->sum('l_amount');
+    }
 
 
 }
