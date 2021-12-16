@@ -24,4 +24,15 @@ class Accounts extends Model
     public function loans(){
         return $this->hasMany(Loans::class, 'account_id');
     }
+    public function AccountDeposit(){
+        return $this->hasMany(Deposits::class, 'account_id' , 'id')->sum('deposit_amount');
+    }
+    public function AccountLoanCount(){
+        return $this->hasMany(Loans::class, 'account_id', 'id')->count();
+    }
+    public function AccountLoanSum(){
+        return $this->hasMany(Loans::class, 'account_id', 'id')->sum('l_amount');
+    }
+
+
 }

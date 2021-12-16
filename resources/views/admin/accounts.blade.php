@@ -41,6 +41,9 @@
                                             <th>ایمیل</th>
                                             <th>تلفن همراه</th>
                                             <th>اولین پرداخت</th>
+                                            <th>موجودی حساب</th>
+                                            <th>تعداد وام</th>
+                                            <th>میزان وام</th>
                                             <th>آدرس</th>
                                             <th>شماره کارت بانک</th>
                                             <th>توضیحات</th>
@@ -55,6 +58,9 @@
                                                 <td>{{ $account->email }}</td>
                                                 <td>{{ $account->phone }}</td>
                                                 <td>{{ $account->first_pay }}</td>
+                                                <td>{{ $account->AccountDeposit() }}</td>
+                                                <td>{{ $account->AccountLoanCount() }}</td>
+                                                <td>{{ $account->AccountLoanSum() }}</td>
                                                 <td>{{ $account->address }}</td>
                                                 <td>{{ $account->bank_account_number }}</td>
                                                 <td>{{ $account->other_info }}</td>
@@ -74,6 +80,9 @@
                                             <th>ایمیل</th>
                                             <th>تلفن همراه</th>
                                             <th>اولین پرداخت</th>
+                                            <th>موجودی حساب</th>
+                                            <th>تعداد وام</th>
+                                            <th>میزان وام</th>
                                             <th>آدرس</th>
                                             <th>شماره کارت بانک</th>
                                             <th>توضیحات</th>
